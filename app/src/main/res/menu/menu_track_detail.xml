@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.kumar.brajesh.couriertracker.TrackDetailActivity"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_item_share"
+        app:showAsAction="always"
+        android:title="Share"
+        />
+</menu>

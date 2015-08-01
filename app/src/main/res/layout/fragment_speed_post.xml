@@ -1,0 +1,35 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:wheel="http://schemas.android.com/apk/res-auto"
+    tools:context="com.kumar.brajesh.couriertracker.TrackDetailActivity$PlaceholderFragment">
+
+    <FrameLayout
+        android:id="@+id/progress_wheel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <com.pnikosis.materialishprogress.ProgressWheel
+            android:layout_gravity="center"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            wheel:matProg_barColor="@color/primary_dark"
+            wheel:matProg_progressIndeterminate="true" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/error_message"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center" />
+
+    <ListView
+
+        android:id="@+id/speed_post_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ListView>
+</FrameLayout>

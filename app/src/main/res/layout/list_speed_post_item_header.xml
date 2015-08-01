@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/padding_large"
+    android:paddingRight="@dimen/padding_large"
+    android:paddingBottom="@dimen/padding_large"
+    android:paddingTop="@dimen/action_bar_height"
+    android:background="@color/speed_post_header">
+
+    <TextView
+        android:textSize="@dimen/list_header_text"
+        android:paddingTop="@dimen/padding_medium"
+        android:textColor="@color/text_icon"
+        android:id="@+id/item_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <include layout="@layout/divider" />
+
+    <TextView
+        android:textSize="@dimen/list_header_text"
+        android:textColor="@color/text_icon"
+        android:id="@+id/booked_at"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:textSize="@dimen/list_header_text"
+        android:textColor="@color/text_icon"
+        android:id="@+id/booked_on"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <include layout="@layout/divider" />
+
+    <TextView
+        android:textSize="@dimen/list_header_text"
+        android:textColor="@color/text_icon"
+        android:id="@+id/delivered_at"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:textSize="@dimen/list_header_text"
+        android:textColor="@color/text_icon"
+        android:id="@+id/delivered_on"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

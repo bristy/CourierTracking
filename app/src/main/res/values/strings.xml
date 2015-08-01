@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">SpeedPostTracker</string>
+
+    <string name="continue_button">Continue</string>
+    <string name="action_settings">Settings</string>
+
+
+
+    <string name="track_hint">Enter Track Number</string>
+    <string name="title_activity_track_detail">TrackDetailActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="error_enter_track_no">Enter Track No</string>
+    
+    <string name="item_number">Item Number :</string>
+    <string name="booked_at">Booked At :</string>
+    <string name="booked_on">Booked On :</string>
+    <string name="delivered_at">Delivered At :</string>
+    <string name="delivered_on">Delivered On :</string>
+    <string name="status">Status :</string>
+    <string name="location">Location :</string>
+    <string name="select">Select</string>
+</resources>

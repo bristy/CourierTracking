@@ -1,0 +1,16 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+    </style>
+    <style name="ToolBarTheme" parent="AppTheme">
+        <item name="android:textColorPrimary">@color/text_icon</item>
+        <item name="android:textColorSecondary">@color/text_icon</item>
+        <item name="textAppearanceLargePopupMenu">@style/OverflowMenuStyle</item>
+    </style>
+
+    <style name="OverflowMenuStyle" parent="TextAppearance.AppCompat.Light.Widget.PopupMenu.Large">
+        <item name="android:textColor">@color/black</item>
+    </style>
+</resources>
