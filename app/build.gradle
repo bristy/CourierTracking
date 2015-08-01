@@ -7,7 +7,7 @@ android {
 
     signingConfigs {
         release {
-            storeFile file("CourierTracker.keystore")
+            storeFile file("CourierTracker.jks")
             keyAlias "CourierTracker"
             def console  = System.console()
             def spass = ""
@@ -29,8 +29,9 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 }
