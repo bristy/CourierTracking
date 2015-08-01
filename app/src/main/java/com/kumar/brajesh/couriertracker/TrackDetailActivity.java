@@ -19,16 +19,23 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import java.io.ByteArrayOutputStream;
 
+import com.kumar.brajesh.couriertracker.network.Constants;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.Calendar;
 
 
 public class TrackDetailActivity extends ActionBarActivity {
@@ -89,7 +96,9 @@ public class TrackDetailActivity extends ActionBarActivity {
         Bitmap sharingBitmap = mRootContent.getDrawingCache(true).copy(Bitmap.Config.RGB_565, false);
         mRootContent.destroyDrawingCache();
         mRootContent.setDrawingCacheEnabled(false);
-        new SaveBitmapTask(sharingBitmap).execute();
+        if(sharingBitmap != null) {
+            new SaveBitmapTask(sharingBitmap).execute();
+        }
     }
 
     private class SaveBitmapTask extends AsyncTask<Void, Void, String> {
@@ -99,23 +108,45 @@ public class TrackDetailActivity extends ActionBarActivity {
         }
         @Override
         protected String doInBackground(Void... params) {
-            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-            mBitmap.compress(Bitmap.CompressFormat.PNG, 100, bytes);
-            String path = MediaStore.Images.Media.insertImage(getContentResolver(),
-                    mBitmap, getIntent().getStringExtra(IntentConstants.TRACK_ID) + System.currentTimeMillis(), null);
-            return path;
+            return  saveBitmap(mBitmap);
         }
 
         @Override
         protected void onPostExecute(String path) {
-            Intent share = new Intent(Intent.ACTION_SEND);
-            share.setType("image/png");
-            Uri imageUri =  Uri.parse(path);
-            share.putExtra(Intent.EXTRA_STREAM, imageUri);
-            Intent sendIntent = Intent.createChooser(share, getResources().getText(R.string.select));
-            if(sendIntent != null) {
-                startActivity(sendIntent);
+            if(path != null) {
+                Intent share = new Intent(Intent.ACTION_SEND);
+                share.setType("image/png");
+                Uri imageUri = Uri.parse(path);
+                share.putExtra(Intent.EXTRA_STREAM, imageUri);
+                Intent sendIntent = Intent.createChooser(share, getResources().getText(R.string.select));
+                if (sendIntent != null) {
+                    startActivity(sendIntent);
+                }
             }
         }
+    }
+
+
+    public String saveBitmap(Bitmap bmp) {
+        String image = "";
+
+        image = System.currentTimeMillis() + Constants.IMAGE_FORMAT;
+        String filePath = Environment.getExternalStorageDirectory()
+                .getAbsolutePath() + File.separator + Constants.EXTERNAL_PICTURE_DIR;
+        try {
+            File dir = new File(filePath);
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+            File file = new File(dir, image);
+            FileOutputStream fOut = new FileOutputStream(file);
+            bmp.compress(Bitmap.CompressFormat.PNG, 90, fOut);
+            fOut.flush();
+            fOut.close();
+            return file.getAbsolutePath();
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage());
+        }
+        return null;
     }
 }

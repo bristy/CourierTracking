@@ -21,5 +21,5 @@ package com.kumar.brajesh.couriertracker.network;
  */
 public interface Constants {
     public String EXTERNAL_PICTURE_DIR = "sp_pic";
-    public String IMAGE_FORMAT = "png";
+    public String IMAGE_FORMAT = ".png";
 }
