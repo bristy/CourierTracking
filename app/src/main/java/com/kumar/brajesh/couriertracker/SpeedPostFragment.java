@@ -44,6 +44,7 @@ import com.kumar.brajesh.couriertracker.network.BaseResponse;
 import com.kumar.brajesh.couriertracker.network.NetworkListener;
 import com.kumar.brajesh.couriertracker.network.SpeedPostRequest;
 import com.kumar.brajesh.couriertracker.network.SpeedPostResponse;
+import com.kumar.brajesh.couriertracker.network.VolleyFactory;
 import com.kumar.brajesh.couriertracker.network.VolleyHelper;
 import com.kumar.brajesh.couriertracker.network.VolleyRequest;
 import com.pnikosis.materialishprogress.ProgressWheel;
@@ -224,5 +225,11 @@ public class SpeedPostFragment extends Fragment implements NetworkListener {
                 }
             });
         }
+    }
+
+    @Override
+    public void onPause() {
+        VolleyFactory.getInstance(getActivity()).getRequestQueue().cancelAll(TAG);
+        super.onPause();
     }
 }
