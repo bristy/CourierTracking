@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">SpeedPostTracker</string>
 
-    <string name="continue_button">Continue</string>
+    <string name="continue_button">Track</string>
     <string name="action_settings">Settings</string>
 
 
