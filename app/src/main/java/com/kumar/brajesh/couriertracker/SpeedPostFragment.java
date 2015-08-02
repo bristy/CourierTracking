@@ -22,6 +22,7 @@ import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.text.Spannable;
@@ -74,7 +75,7 @@ public class SpeedPostFragment extends Fragment implements NetworkListener {
     private void initViews(View root) {
         mSpeedPostList = (ListView) root.findViewById(R.id.speed_post_list);
         mErrorMessage = (TextView) root.findViewById(R.id.error_message);
-        mProgressWheel =  root.findViewById(R.id.progress_wheel);
+        mProgressWheel = root.findViewById(R.id.progress_wheel);
         quickReturnPattern();
     }
 
@@ -137,8 +138,16 @@ public class SpeedPostFragment extends Fragment implements NetworkListener {
                 mAdapter = new SpeedPostAdapter(getActivity(), mSpeedPostResponse);
                 mErrorMessage.setVisibility(View.GONE);
                 mSpeedPostList.setVisibility(View.VISIBLE);
-                mSpeedPostList.setAdapter(mAdapter);
                 addHeaderView();
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mSpeedPostList.setAdapter(mAdapter);
+                    }
+                }, 100);
+
+
             } else {
                 mSpeedPostList.setVisibility(View.GONE);
                 mErrorMessage.setVisibility(View.VISIBLE);
